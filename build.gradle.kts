@@ -52,3 +52,9 @@ conventionalCommits {
     successMessage = "Сообщение коммита соответствует стандартам Conventional Commit."
     failureMessage = "Сообщение коммита не соответствует стандартам Conventional Commit."
 }
+
+tasks.bootRun {
+    if (project.hasProperty("file")) {
+        systemProperty("file", project.property("file") as String)
+    }
+}
