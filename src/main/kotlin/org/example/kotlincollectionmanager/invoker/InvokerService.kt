@@ -10,11 +10,15 @@ import java.util.*
 class InvokerService(@Autowired private val commands: List<Command>) {
     private val commandMap = mutableMapOf<String, Command>()
 
-    @PostConstruct // Выполняется после создания бина
+    @PostConstruct
     fun init() {
         commands.forEach { command ->
-            commandMap[command.name] = command // Заполняем map командами
+            commandMap[command.name] = command
         }
+    }
+
+    fun getCommands(): Map<String, Command> {
+        return commandMap
     }
 
     fun run() {
@@ -25,9 +29,12 @@ class InvokerService(@Autowired private val commands: List<Command>) {
             val line = scanner.nextLine()
             val tokens = line.split(" ")
             val command = commandMap[tokens[0]]
+            val arguments = tokens.drop(1)
 
-            if (command != null) {
+            if (command != null && arguments.isEmpty()) {
                 command.execute()
+            } else if (command != null) {
+                command.execute(arguments.joinToString(" "))
             } else {
                 println("Неизвестная команда: ${tokens[0]}")
             }
