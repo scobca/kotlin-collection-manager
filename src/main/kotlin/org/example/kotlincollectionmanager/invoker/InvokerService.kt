@@ -22,18 +22,21 @@ class InvokerService(@Autowired private val commandsList: List<Command<out Valid
 
     fun run() {
         val scanner = Scanner(System.`in`)
-
-        println("Введите команду:")
+        print("> ")
         while (scanner.hasNextLine()) {
             val line = scanner.nextLine().trim()
             val command = commands[line.split(" ")[0]]
             val args = line.split(" ").drop(1)
+
+            if (line == "") {continue}
 
             if (command != null) {
                 command.validate(args)
             } else {
                 println("Command with name ${line.split(" ")[0]} not found")
             }
+
+            print("> ")
         }
     }
 }
