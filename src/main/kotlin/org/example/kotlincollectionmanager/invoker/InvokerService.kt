@@ -30,6 +30,11 @@ class InvokerService(@Autowired private val commandsList: List<Command<out Valid
 
             if (line == "") {continue}
 
+            if (command?.name == "exit") {
+                println("Exiting...")
+                break
+            }
+
             if (command != null) {
                 command.validate(args)
             } else {
