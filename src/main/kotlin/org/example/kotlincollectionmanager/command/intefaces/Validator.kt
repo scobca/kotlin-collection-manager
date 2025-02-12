@@ -1,5 +1,5 @@
 package org.example.kotlincollectionmanager.command.intefaces
 
 interface Validator {
-    fun validate(args: List<String>): String
+    fun validateArgs(args: List<String>, command: Command<out Validator>)
 }

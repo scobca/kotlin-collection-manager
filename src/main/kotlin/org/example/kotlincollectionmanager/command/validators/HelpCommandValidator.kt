@@ -5,12 +5,16 @@ import org.example.kotlincollectionmanager.command.intefaces.Validator
 import org.springframework.stereotype.Component
 
 @Component
-class NoArgsCommandValidator : Validator {
+class HelpCommandValidator : NoArgsCommandValidator() {
     override fun validateArgs(args: List<String>, command: Command<out Validator>) {
-        return if (args.isEmpty()) {
+        if (args.isEmpty()) {
             command.execute()
         } else {
-            println("Unexpected arguments: ${args.joinToString(" ")}. For more details enter 'help' in command line")
+            if (args.size == 1) {
+                command.execute(args[0])
+            } else {
+                println("Unexpected arguments: ${args.joinToString(" ")}. For more details enter 'help' in command line")
+            }
         }
     }
 }

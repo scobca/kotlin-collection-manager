@@ -1,7 +1,7 @@
 package org.example.kotlincollectionmanager.command
 
 import org.example.kotlincollectionmanager.command.intefaces.Command
-import org.example.kotlincollectionmanager.command.validators.NoArgsCommandValidator
+import org.example.kotlincollectionmanager.command.validators.HelpCommandValidator
 import org.example.kotlincollectionmanager.invoker.InvokerService
 import org.example.kotlincollectionmanager.utils.Logger.describeCommand
 import org.example.kotlincollectionmanager.utils.Logger.printHeader
@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Lazy
 import org.springframework.stereotype.Component
 
 @Component
-class HelpCommand(override val validator: NoArgsCommandValidator, @Lazy private val invokerService: InvokerService) :
-    Command<NoArgsCommandValidator> {
+class HelpCommand(override val validator: HelpCommandValidator, @Lazy private val invokerService: InvokerService) :
+    Command<HelpCommandValidator> {
     override val name: String = "help"
     override val description: String = "help command"
     override val keys: List<String>? = null
@@ -33,17 +33,7 @@ class HelpCommand(override val validator: NoArgsCommandValidator, @Lazy private 
         }
     }
 
-    override fun validate(arg: List<String>) {
-        val response = validator.validate(arg)
-
-        if (response == "OK") {
-            execute()
-        } else {
-            if (arg.size == 1) {
-                execute(arg[0])
-            } else {
-                println("Unexpected arguments: ${arg.joinToString(" ")}. For more details enter 'help' in command line")
-            }
-        }
+    override fun validate(args: List<String>) {
+        validator.validateArgs(args, this)
     }
 }

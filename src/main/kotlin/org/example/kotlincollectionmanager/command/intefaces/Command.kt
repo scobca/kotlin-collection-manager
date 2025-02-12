@@ -7,5 +7,5 @@ interface Command<T : Validator> {
     val keys: List<String>?
 
     fun execute(vararg args: String?)
-    fun validate(arg: List<String>)
+    fun validate(args: List<String>)
 }
