@@ -1,4 +1,4 @@
-package org.example.kotlincollectionmanager.collection
+package org.example.kotlincollectionmanager.collection.items
 
 import java.time.ZonedDateTime
 

@@ -1,4 +1,4 @@
-package org.example.kotlincollectionmanager.collection
+package org.example.kotlincollectionmanager.collection.items
 
 class House(
     private var name: String,
