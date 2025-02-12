@@ -11,7 +11,7 @@ class HelpCommandValidator : NoArgsCommandValidator() {
             command.execute()
         } else {
             if (args.size == 1) {
-                command.execute(args[0])
+                command.execute(args[0].trim())
             } else {
                 println("Unexpected arguments: ${args.joinToString(" ")}. For more details enter 'help' in command line")
             }
