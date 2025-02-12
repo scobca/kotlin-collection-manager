@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component
 class HelpCommand(override val validator: HelpCommandValidator, @Lazy private val invokerService: InvokerService) :
     Command<HelpCommandValidator> {
     override val name: String = "help"
-    override val description: String = "help command"
+    override val description: String = "Displays help for available commands | for a specific command."
     override val keys: List<String>? = null
 
     override fun execute(vararg args: String?) {
