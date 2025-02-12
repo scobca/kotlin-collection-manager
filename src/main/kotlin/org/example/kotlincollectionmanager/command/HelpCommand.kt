@@ -1,50 +1,48 @@
 package org.example.kotlincollectionmanager.command
 
+import org.example.kotlincollectionmanager.command.intefaces.Command
+import org.example.kotlincollectionmanager.command.validators.NoArgsCommandValidator
 import org.example.kotlincollectionmanager.invoker.InvokerService
+import org.example.kotlincollectionmanager.utils.Logger.describeCommand
+import org.example.kotlincollectionmanager.utils.Logger.printHeader
 import org.springframework.context.annotation.Lazy
 import org.springframework.stereotype.Component
 
 @Component
-class HelpCommand(@Lazy private val invokerService: InvokerService) : Command() {
+class HelpCommand(override val validator: NoArgsCommandValidator, @Lazy private val invokerService: InvokerService) :
+    Command<NoArgsCommandValidator> {
     override val name: String = "help"
-    override val description: String = "Shows information about commands"
-    override val keys: Set<String> = setOf("Command")
+    override val description: String = "help command"
+    override val keys: List<String>? = null
 
-    override fun execute(vararg args: String) {
-        val commands: Map<String, Command> = invokerService.getCommands()
-        val delimiter = "————————————————————————————————————"
-        val format = "%-20s %-25s %s"
+    override fun execute(vararg args: String?) {
+        val commands = invokerService.getCommands()
 
         if (args.isEmpty()) {
-            println("Доступные команды:")
-            println(delimiter)
-            println(String.format(format, "Команда", "Ключи", "Описание"))
-            commands.forEach { (name, command) ->
-                println(String.format(format, name, command.keys, command.description))
+            printHeader()
+            commands.forEach {
+                describeCommand(it.value)
             }
-            println(delimiter)
         } else {
-            val argsList: List<String> = args[0].split(" ")
-
-            if (argsList.size == 1) {
-                val commandName = args[0]
-                val command = commands[commandName]
-
-                if (command != null) {
-                    println("Команда '${command.name}':")
-                    println(delimiter)
-                    println(String.format(format, "Команда", "Ключи", "Описание"))
-                    println(String.format(format, name, command.keys, command.description))
-                    println(delimiter)
-                } else {
-                    println("Command $commandName not found")
-                }
+            if (commands[args[0]] != null) {
+                printHeader()
+                commands[args[0]]?.let { describeCommand(it) }
             } else {
-                println(
-                    "Ошибка в выполнении команды: неизвестный аргумент ${
-                        argsList.joinToString(" ")
-                    }"
-                )
+                println("Command with name ${args[0]} not found")
+            }
+        }
+    }
+
+    override fun validate(arg: List<String>) {
+        val response = validator.validate(arg)
+
+        if (response == "OK") {
+            execute()
+        } else {
+            if (arg.size == 1) {
+                execute(arg[0])
+            } else {
+                println("Unexpected arguments: ${arg.joinToString(" ")}. For more details enter 'help' in command line")
             }
         }
     }
