@@ -4,7 +4,6 @@ import java.time.ZonedDateTime
 
 
 class Flat(
-    private var id: Long,
     private var name: String,
     private var coordinates: Coordinates,
     private var area: Long,
@@ -14,6 +13,7 @@ class Flat(
     private var furnish: Furnish,
     private var house: House,
 ) {
+    private var id: Long = 1
     private val creationDate: ZonedDateTime = ZonedDateTime.now()
 
     init {
@@ -33,6 +33,16 @@ class Flat(
     fun getBalcony(): Boolean = balcony
     fun getFurnish(): Furnish = furnish
     fun getHouse(): House = house
+
+    fun setId(id: Long) = apply {this.id = id}
+    fun setName(name: String) = apply {this.name = name}
+    fun setCoordinates(coordinates: Coordinates) = apply {this.coordinates = coordinates}
+    fun setArea(area: Long) = apply {this.area = area}
+    fun setNumberOfRooms(numberOfRooms: Long) = apply {this.numberOfRooms = numberOfRooms}
+    fun setPrice(price: Long) = apply {this.price = price}
+    fun setBalcony(balcony: Boolean) = apply {this.balcony = balcony}
+    fun setFurnish(furnish: Furnish) = apply {this.furnish = furnish}
+    fun setHouse(house: House) = apply {this.house = house}
 
     override fun toString(): String {
         return "Flat(id=$id, name='$name', coordinates=$coordinates, area=$area, numberOfRooms=$numberOfRooms, price=$price, balcony=$balcony, furnish=$furnish, house=$house, creationDate=$creationDate)"

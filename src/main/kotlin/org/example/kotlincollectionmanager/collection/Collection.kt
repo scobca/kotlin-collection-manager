@@ -6,7 +6,10 @@ import java.time.ZonedDateTime
 import java.util.*
 
 @Component
-class Collection() {
+class Collection {
     private val initDate: ZonedDateTime = ZonedDateTime.now()
-    var flats = TreeMap<Long, Flat>()
+    private var flats = TreeMap<Long, Flat>()
+
+    fun getInitDate(): ZonedDateTime = initDate
+    fun getFlats(): TreeMap<Long, Flat> = flats
 }
