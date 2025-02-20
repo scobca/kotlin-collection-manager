@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component
 
 @Component
-class InfoCommand(@Qualifier("noArgsCommandValidator") override val validator: NoArgsCommandValidator, private val receiverService: ReceiverService) : Command<NoArgsCommandValidator> {
+class InfoCommand(
+    @Qualifier("noArgsCommandValidator") override val validator: NoArgsCommandValidator,
+    private val receiverService: ReceiverService
+) : Command<NoArgsCommandValidator> {
     override val name: String = "info"
     override val description: String = "Display information about the collection"
     override val keys: List<String>? = null
