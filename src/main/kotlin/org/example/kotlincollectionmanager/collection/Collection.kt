@@ -12,4 +12,7 @@ class Collection {
 
     fun getInitDate(): ZonedDateTime = initDate
     fun getFlats(): TreeMap<Long, Flat> = flats
+    operator fun get(id: Long): Flat? {
+        return flats[id]
+    }
 }
