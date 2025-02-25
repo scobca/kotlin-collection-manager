@@ -45,4 +45,20 @@ class ReceiverService(@Autowired private var collection: Collection) {
     fun clear() {
         collection.getFlats().clear()
     }
+
+    fun getAveragePrice() {
+        var allPrices: Long= 0
+        val flatsCount = collection.getFlats().size
+
+        if (flatsCount > 0) {
+            collection.getFlats().forEach { flat ->
+                if (flat.value.getPrice() != null) {
+                    allPrices += flat.value.getPrice()!!
+                }
+            }
+            println("Average price for flats: ${allPrices / flatsCount}")
+        } else {
+            println("No flats available. Cannot get the average price")
+        }
+    }
 }
