@@ -5,7 +5,7 @@ import java.time.ZonedDateTime
 
 class Flat(
     private var name: String? = null,
-    private var coordinates: Coordinates? = null,
+    private var coordinates: Coordinates? = Coordinates(),
     private var area: Long? = null,
     private var numberOfRooms: Long? = null,
     private var price: Long? = null,
