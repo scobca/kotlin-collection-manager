@@ -8,7 +8,7 @@ import org.example.kotlincollectionmanager.command.intefaces.Command
 import org.example.kotlincollectionmanager.command.validators.OneArgCommandValidator
 import org.example.kotlincollectionmanager.receiver.ReceiverService
 import org.example.kotlincollectionmanager.utils.AdvancedScanner
-import org.example.kotlincollectionmanager.utils.InsertErrorHandler
+import org.example.kotlincollectionmanager.utils.CommandsErrorHandler
 import org.springframework.stereotype.Component
 
 @Component
@@ -16,7 +16,7 @@ class InsertCommand(
     override val validator: OneArgCommandValidator,
     private val receiverService: ReceiverService,
     private val scanner: AdvancedScanner,
-    private val insertErrorHandler: InsertErrorHandler,
+    private val commandsErrorHandler: CommandsErrorHandler,
 ) : Command<OneArgCommandValidator> {
     override val name: String = "insert"
     override val description: String = "Adds a new element with the specified key"
@@ -28,7 +28,7 @@ class InsertCommand(
         if (id == null) {
             println("Id format is invalid. Please try again")
         } else if (receiverService.getElementById(id) != null) {
-            this.insertErrorHandler.resolveFlatError(id)
+            this.commandsErrorHandler.resolveFlatInsertError(id)
         } else {
             val newFlat = Flat()
             val newCoordinates = Coordinates()

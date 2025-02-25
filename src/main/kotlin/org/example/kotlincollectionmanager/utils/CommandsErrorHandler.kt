@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component
 import java.util.*
 
 @Component
-class InsertErrorHandler(private val receiverService: ReceiverService, @Lazy private val insertCommand: InsertCommand) {
+class CommandsErrorHandler(private val receiverService: ReceiverService, @Lazy private val insertCommand: InsertCommand) {
     private val scanner = Scanner(System.`in`)
 
-    fun resolveFlatError(id: Long) {
+    fun resolveFlatInsertError(id: Long) {
         println("Flat with id: $id already exists. Want to remove it? (yes | no)")
         print("> ")
         val response = scanner.nextLine()
