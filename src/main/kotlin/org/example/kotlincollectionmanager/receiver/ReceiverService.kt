@@ -18,7 +18,7 @@ class ReceiverService(@Autowired private var collection: Collection) {
         if (collection.getFlats().size > 0) {
             println("Available flats:")
             collection.getFlats().forEach { flat ->
-                println(flat.value.toString())
+                println("   ——> $flat")
             }
         } else println("No flats available in collection")
     }
