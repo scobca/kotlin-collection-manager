@@ -49,7 +49,7 @@ class InsertCommand(
                 newFlat.setNumberOfRooms(scanner.cycleScan("Enter number of rooms: ") { it.toLong() })
             }
 
-            while (newFlat.getPrice() != null) {
+            while (newFlat.getPrice() == null) {
                 newFlat.setPrice(scanner.cycleScan("Enter price: ") { it.toLong() })
             }
 
