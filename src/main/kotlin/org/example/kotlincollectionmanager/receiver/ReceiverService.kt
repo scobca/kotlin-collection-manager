@@ -7,6 +7,10 @@ import org.springframework.stereotype.Component
 
 @Component
 class ReceiverService(@Autowired private var collection: Collection) {
+    fun getElementById(id: Long): Flat? {
+        return collection[id]
+    }
+
     fun info() {
         println("Collection type: ${collection.getFlats()::class.simpleName}")
         println("Initialization date: ${collection.getInitDate()}")
@@ -21,6 +25,11 @@ class ReceiverService(@Autowired private var collection: Collection) {
                 println("   ——> ${flat.value}")
             }
         } else println("No flats available in collection")
+    }
+
+    fun insert(flat: Flat) {
+        collection.getFlats()[flat.getId()] = flat
+        println("Flat created successfully")
     }
 
     fun remove(flatId: Long) {
