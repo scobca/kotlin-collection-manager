@@ -18,20 +18,14 @@ class ReceiverService(@Autowired private var collection: Collection) {
         if (collection.getFlats().size > 0) {
             println("Available flats:")
             collection.getFlats().forEach { flat ->
-                println("   ——> $flat")
+                println("   ——> ${flat.value}")
             }
         } else println("No flats available in collection")
     }
 
-    fun insert(flat: Flat) {
-        if (collection.getFlats().isNotEmpty()) {
-            val lastIndex = collection.getFlats().lastKey()
-            flat.setId(lastIndex + 1)
-            collection.getFlats()[flat.getId()] = flat
-        } else {
-            flat.setId(1)
-            collection.getFlats()[flat.getId()] = flat
-        }
+    fun remove(flatId: Long) {
+        collection.getFlats().remove(flatId)
+        println("Flat with id: $flatId removed successfully")
     }
 
     fun clear() {
