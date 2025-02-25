@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Lazy
 import org.springframework.stereotype.Component
 
 @Component
-class History(
+class HistoryCommand(
     @Qualifier("noArgsCommandValidator") override val validator: NoArgsCommandValidator,
     @Lazy private val invokerService: InvokerService
 ) : Command<NoArgsCommandValidator> {

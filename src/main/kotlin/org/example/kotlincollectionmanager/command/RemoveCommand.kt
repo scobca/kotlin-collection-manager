@@ -6,7 +6,7 @@ import org.example.kotlincollectionmanager.receiver.ReceiverService
 import org.springframework.stereotype.Component
 
 @Component
-class Remove(
+class RemoveCommand(
     override val validator: OneArgCommandValidator,
     private val receiverService: ReceiverService,
 ) : Command<OneArgCommandValidator> {
