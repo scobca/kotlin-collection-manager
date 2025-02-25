@@ -32,6 +32,11 @@ class ReceiverService(@Autowired private var collection: Collection) {
         println("Flat created successfully")
     }
 
+    fun update(flat: Flat) {
+        collection.getFlats()[flat.getId()] = flat
+        println("Flat updated successfully")
+    }
+
     fun remove(flatId: Long) {
         collection.getFlats().remove(flatId)
         println("Flat with id: $flatId removed successfully")

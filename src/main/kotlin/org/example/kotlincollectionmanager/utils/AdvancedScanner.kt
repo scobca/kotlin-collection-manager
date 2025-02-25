@@ -8,7 +8,6 @@ class AdvancedScanner {
     val scanner = Scanner(System.`in`)
 
     fun <T> cycleScan(message: String, converter: (String) -> T): T {
-
         var value: T? = null
         while (value == null) {
             try {
@@ -16,6 +15,28 @@ class AdvancedScanner {
 
                 val newValue = scanner.nextLine().trim()
                 value = converter(newValue)
+            } catch (e: NumberFormatException) {
+                println("Invalid input. Please try again.")
+            } catch (e: Exception) {
+                println("An error occurred: ${e.message}")
+            }
+        }
+
+        return value
+    }
+
+    fun <T> cycleUpdateScan(message: String, oldValue: T, converter: (String) -> T): T {
+        var value: T? = null
+        while (value == null) {
+            try {
+                print(message)
+
+                val newValue = scanner.nextLine().trim()
+                value = if (newValue == "") {
+                    oldValue
+                } else {
+                    converter(newValue)
+                }
             } catch (e: NumberFormatException) {
                 println("Invalid input. Please try again.")
             } catch (e: Exception) {
