@@ -3,6 +3,7 @@ package org.example.kotlincollectionmanager.invoker
 import jakarta.annotation.PostConstruct
 import org.example.kotlincollectionmanager.command.intefaces.Command
 import org.example.kotlincollectionmanager.command.intefaces.Validator
+import org.example.kotlincollectionmanager.command.storage.CommandsHistory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import java.util.*
@@ -10,6 +11,7 @@ import java.util.*
 @Component
 class InvokerService(@Autowired private val commandsList: List<Command<out Validator>>) {
     private val commands = mutableMapOf<String, Command<out Validator>>()
+    private val history = CommandsHistory()
 
     @PostConstruct
     fun init() {
@@ -19,6 +21,7 @@ class InvokerService(@Autowired private val commandsList: List<Command<out Valid
     }
 
     fun getCommands(): Map<String, Command<out Validator>> = commands
+    fun getCommandsHistory(): LinkedList<String> = history.getCommandsHistory()
 
     fun run() {
         val scanner = Scanner(System.`in`)
@@ -37,6 +40,7 @@ class InvokerService(@Autowired private val commandsList: List<Command<out Valid
 
             if (command != null) {
                 command.validate(args)
+                history.addCommand(command)
             } else {
                 println("Command with name ${line.split(" ")[0]} not found")
             }
