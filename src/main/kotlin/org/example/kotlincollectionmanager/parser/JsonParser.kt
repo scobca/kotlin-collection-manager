@@ -7,8 +7,8 @@ import org.example.kotlincollectionmanager.collection.items.Furnish
 import org.example.kotlincollectionmanager.collection.items.House
 import org.example.kotlincollectionmanager.receiver.ReceiverService
 import org.springframework.stereotype.Component
-import java.io.InputStream
-import java.io.InputStreamReader
+import java.io.*
+import java.util.*
 
 @Component
 class JsonParser(private val receiverService: ReceiverService) {
@@ -39,4 +39,34 @@ class JsonParser(private val receiverService: ReceiverService) {
         }
     }
 
+    fun saveFlats(flats: TreeMap<Long, Flat>, fileName: String) {
+        val mapper = ObjectMapper()
+
+        try {
+            val file = File("$fileName.json")
+
+            if (file.exists()) file.delete()
+            file.createNewFile()
+
+            val flatsJson = flats.values.map { flat ->
+                FlatJson(
+                    id = flat.getId(),
+                    name = flat.getName(),
+                    coordinates = flat.getCoordinates()?.let { CoordinatesJson(it.getX(), it.getY()) },
+                    area = flat.getArea(),
+                    price = flat.getPrice(),
+                    balcony = flat.getBalcony(),
+                    furnish = flat.getFurnish()?.name,
+                    house = flat.getHouse()?.let { HouseJson(it.getName(), it.getYear(), it.getNumberOfFloors()) }
+                )
+            }.toTypedArray()
+
+            OutputStreamWriter(FileOutputStream(file)).use { out ->
+                mapper.writeValue(out, flatsJson)
+            }
+            println("Квартиры успешно сохранены в файл $fileName")
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }

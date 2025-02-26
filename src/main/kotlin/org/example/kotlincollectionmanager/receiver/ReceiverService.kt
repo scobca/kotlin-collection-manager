@@ -4,11 +4,16 @@ import org.example.kotlincollectionmanager.collection.Collection
 import org.example.kotlincollectionmanager.collection.items.Flat
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
+import java.util.*
 
 @Component
 class ReceiverService(@Autowired private var collection: Collection) {
     fun getElementById(id: Long): Flat? {
         return collection[id]
+    }
+
+    fun getFlats(): TreeMap<Long, Flat> {
+        return collection.getFlats()
     }
 
     fun info() {
