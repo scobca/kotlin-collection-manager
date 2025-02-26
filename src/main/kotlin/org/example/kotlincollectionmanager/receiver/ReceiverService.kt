@@ -51,6 +51,19 @@ class ReceiverService(@Autowired private var collection: Collection) {
         collection.getFlats().clear()
     }
 
+    fun removeLowerKey(id: Long) {
+        val flats = collection.getFlats()
+        val removableFlats = mutableListOf<Long>()
+
+        flats.forEach { flat ->
+            if (flat.key < id) {
+                removableFlats.add(flat.key)
+            }
+        }
+
+        removableFlats.forEach { flatId -> remove(flatId) }
+    }
+
     fun removeAllByBalcony(bool: String) {
         val flats = collection.getFlats()
 
