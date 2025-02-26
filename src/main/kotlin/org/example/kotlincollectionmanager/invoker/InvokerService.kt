@@ -31,7 +31,10 @@ class InvokerService(@Autowired private val commandsList: List<Command<out Valid
             val command = commands[line.split(" ")[0]]
             val args = line.split(" ").drop(1)
 
-            if (line == "") {continue}
+            if (line == "") {
+                print("> ")
+                continue
+            }
 
             if (command?.name == "exit") {
                 println("Exiting...")
