@@ -6,6 +6,7 @@ import org.example.kotlincollectionmanager.collection.items.Furnish
 import org.example.kotlincollectionmanager.collection.items.House
 import org.example.kotlincollectionmanager.command.validators.dto.FlatData
 import org.example.kotlincollectionmanager.receiver.ReceiverService
+import org.example.kotlincollectionmanager.strategies.interfaces.SpecifyCommandStrategy
 import org.example.kotlincollectionmanager.utils.AdvancedScanner
 import org.example.kotlincollectionmanager.utils.CommandsErrorHandler
 import org.springframework.stereotype.Component
@@ -15,8 +16,8 @@ class InsertFlatStrategy(
     private val receiverService: ReceiverService,
     private val commandsErrorHandler: CommandsErrorHandler,
     private val scanner: AdvancedScanner,
-) {
-    fun lifeTimeInsert(id: Long?) {
+) : SpecifyCommandStrategy {
+    override fun lifeTimeInsert(id: Long?) {
         if (id == null) {
             println("Id format is invalid. Please try again")
         } else if (receiverService.getElementById(id) != null) {
@@ -65,7 +66,7 @@ class InsertFlatStrategy(
         }
     }
 
-    fun automaticallyInsert(id: Long?, data: FlatData) {
+    override fun automaticallyInsert(id: Long?, data: FlatData) {
         val coordinates = Coordinates()
             .setX(data.cordX)
             .setY(data.cordY)
