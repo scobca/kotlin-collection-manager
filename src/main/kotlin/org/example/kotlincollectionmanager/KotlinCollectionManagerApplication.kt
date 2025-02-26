@@ -1,15 +1,43 @@
 package org.example.kotlincollectionmanager
 
 import org.example.kotlincollectionmanager.invoker.InvokerService
+import org.example.kotlincollectionmanager.parser.JsonParser
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import java.io.File
+import java.io.FileInputStream
+import java.io.IOException
 
 @SpringBootApplication
-class KotlinCollectionManagerApplication(private val invokerService: InvokerService) : CommandLineRunner {
+class KotlinCollectionManagerApplication(private val invokerService: InvokerService, private val parser: JsonParser) :
+    CommandLineRunner {
 
     override fun run(vararg args: String?) {
-        val filename: String? = System.getProperty("file")
+        if (args.isNotEmpty()) {
+            val fileName = args[0]?.trim()
+            val resource = File("$fileName.json")
+
+            if (resource.exists()) {
+                if (resource.length() > 0) {
+                    val inputStream = FileInputStream(resource)
+                    parser.loadFlats(inputStream)
+                }
+            } else {
+                val file = File("$fileName.json")
+
+                try {
+                    if (file.createNewFile()) {
+                        println("Файл $fileName.json создан успешно.")
+                    } else {
+                        println("Ошибка при создании файла $fileName.json")
+                    }
+                } catch (e: IOException) {
+                    println("Ошибка при создании файла: $e")
+                }
+            }
+        }
+
         invokerService.run()
     }
 }
