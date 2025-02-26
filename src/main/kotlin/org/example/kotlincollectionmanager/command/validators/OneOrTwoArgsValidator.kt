@@ -6,7 +6,6 @@ import org.example.kotlincollectionmanager.command.intefaces.Validator
 
 class OneOrTwoArgsValidator : Validator {
     private fun validateTwoArgs(args: List<String>, command: AutoCommand<out Validator>) {
-        println(args[1])
         if (args.isEmpty()) {
             println("Arguments for this command cannot be empty. For more info write 'help <command>' into console")
         } else if (args.size == 1) {

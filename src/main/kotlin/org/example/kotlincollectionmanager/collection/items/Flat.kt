@@ -3,7 +3,7 @@ package org.example.kotlincollectionmanager.collection.items
 import java.time.ZonedDateTime
 
 
-class Flat (
+class Flat(
     private var name: String? = null,
     private var coordinates: Coordinates? = Coordinates(),
     private var area: Long? = null,
@@ -31,7 +31,7 @@ class Flat (
         if (id > 0) this.id = id else println("id must be greater than 0")
     }
 
-    fun setName(name: String) = apply { this.name = name }
+    fun setName(name: String) = apply { if (name != "") this.name = name else println("Name cannot be empty") }
 
     fun setCoordinates(coordinates: Coordinates) = apply { this.coordinates = coordinates }
 
