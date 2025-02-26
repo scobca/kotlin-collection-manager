@@ -4,7 +4,7 @@ import org.example.kotlincollectionmanager.collection.items.Coordinates
 import org.example.kotlincollectionmanager.collection.items.Flat
 import org.example.kotlincollectionmanager.collection.items.Furnish
 import org.example.kotlincollectionmanager.collection.items.House
-import org.example.kotlincollectionmanager.command.intefaces.Command
+import org.example.kotlincollectionmanager.command.interfaces.Command
 import org.example.kotlincollectionmanager.command.validators.OneArgCommandValidator
 import org.example.kotlincollectionmanager.receiver.ReceiverService
 import org.example.kotlincollectionmanager.utils.AdvancedScanner

@@ -1,6 +1,6 @@
 package org.example.kotlincollectionmanager.command
 
-import org.example.kotlincollectionmanager.command.intefaces.AutoCommand
+import org.example.kotlincollectionmanager.command.interfaces.AutoCommand
 import org.example.kotlincollectionmanager.command.validators.OneOrTwoArgsValidator
 import org.example.kotlincollectionmanager.strategies.InsertFlatStrategy
 import org.example.kotlincollectionmanager.utils.StringFlatDataConverter

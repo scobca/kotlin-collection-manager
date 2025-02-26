@@ -1,6 +1,6 @@
 package org.example.kotlincollectionmanager.command
 
-import org.example.kotlincollectionmanager.command.intefaces.Command
+import org.example.kotlincollectionmanager.command.interfaces.Command
 import org.example.kotlincollectionmanager.command.validators.OneArgCommandValidator
 import org.example.kotlincollectionmanager.parser.JsonParser
 import org.example.kotlincollectionmanager.receiver.ReceiverService

@@ -1,6 +1,6 @@
 package org.example.kotlincollectionmanager.command
 
-import org.example.kotlincollectionmanager.command.intefaces.Command
+import org.example.kotlincollectionmanager.command.interfaces.Command
 import org.example.kotlincollectionmanager.command.validators.NoArgsCommandValidator
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component

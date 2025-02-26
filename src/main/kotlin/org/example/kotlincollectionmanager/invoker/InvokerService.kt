@@ -1,8 +1,8 @@
 package org.example.kotlincollectionmanager.invoker
 
 import jakarta.annotation.PostConstruct
-import org.example.kotlincollectionmanager.command.intefaces.Command
-import org.example.kotlincollectionmanager.command.intefaces.Validator
+import org.example.kotlincollectionmanager.command.interfaces.Command
+import org.example.kotlincollectionmanager.command.interfaces.Validator
 import org.example.kotlincollectionmanager.command.storage.CommandsHistory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component

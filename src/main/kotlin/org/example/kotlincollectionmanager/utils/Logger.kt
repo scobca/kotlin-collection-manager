@@ -1,7 +1,7 @@
 package org.example.kotlincollectionmanager.utils
 
-import org.example.kotlincollectionmanager.command.intefaces.Command
-import org.example.kotlincollectionmanager.command.intefaces.Validator
+import org.example.kotlincollectionmanager.command.interfaces.Command
+import org.example.kotlincollectionmanager.command.interfaces.Validator
 
 object Logger {
     fun describeCommand(command: Command<out Validator>) {

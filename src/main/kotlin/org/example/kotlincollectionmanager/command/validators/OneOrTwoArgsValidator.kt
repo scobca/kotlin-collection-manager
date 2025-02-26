@@ -1,8 +1,8 @@
 package org.example.kotlincollectionmanager.command.validators
 
-import org.example.kotlincollectionmanager.command.intefaces.AutoCommand
-import org.example.kotlincollectionmanager.command.intefaces.Command
-import org.example.kotlincollectionmanager.command.intefaces.Validator
+import org.example.kotlincollectionmanager.command.interfaces.AutoCommand
+import org.example.kotlincollectionmanager.command.interfaces.Command
+import org.example.kotlincollectionmanager.command.interfaces.Validator
 
 class OneOrTwoArgsValidator : Validator {
     private fun validateTwoArgs(args: List<String>, command: AutoCommand<out Validator>) {

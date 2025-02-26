@@ -1,7 +1,7 @@
 package org.example.kotlincollectionmanager.command.validators
 
-import org.example.kotlincollectionmanager.command.intefaces.Command
-import org.example.kotlincollectionmanager.command.intefaces.Validator
+import org.example.kotlincollectionmanager.command.interfaces.Command
+import org.example.kotlincollectionmanager.command.interfaces.Validator
 
 class OneArgCommandValidator : Validator {
     override fun validateArgs(args: List<String>, command: Command<out Validator>) {

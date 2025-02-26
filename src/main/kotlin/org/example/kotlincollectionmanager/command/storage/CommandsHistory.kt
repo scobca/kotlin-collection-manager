@@ -1,7 +1,7 @@
 package org.example.kotlincollectionmanager.command.storage
 
-import org.example.kotlincollectionmanager.command.intefaces.Command
-import org.example.kotlincollectionmanager.command.intefaces.Validator
+import org.example.kotlincollectionmanager.command.interfaces.Command
+import org.example.kotlincollectionmanager.command.interfaces.Validator
 import org.springframework.stereotype.Component
 import java.util.*
 
