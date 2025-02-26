@@ -51,6 +51,15 @@ class ReceiverService(@Autowired private var collection: Collection) {
         collection.getFlats().clear()
     }
 
+    fun replaceIfLower(id: Long, flat: Flat) {
+        val comparableFlat = collection.getFlats()[id]
+
+        if (comparableFlat != null && comparableFlat < flat) {
+            collection[id] = flat
+            println("Flat replaced successfully")
+        } else println("Flat replaced failed")
+    }
+
     fun removeLowerKey(id: Long) {
         val flats = collection.getFlats()
         val removableFlats = mutableListOf<Long>()

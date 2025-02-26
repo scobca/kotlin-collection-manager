@@ -15,4 +15,8 @@ class Collection {
     operator fun get(id: Long): Flat? {
         return flats[id]
     }
+
+    operator fun set(id: Long, value: Flat) {
+        flats[id] = value
+    }
 }

@@ -3,7 +3,7 @@ package org.example.kotlincollectionmanager.collection.items
 import java.time.ZonedDateTime
 
 
-class Flat(
+class Flat (
     private var name: String? = null,
     private var coordinates: Coordinates? = Coordinates(),
     private var area: Long? = null,
@@ -12,7 +12,7 @@ class Flat(
     private var balcony: Boolean? = null,
     private var furnish: Furnish? = null,
     private var house: House? = null,
-) {
+) : Comparable<Flat> {
     private var id: Long = 0
     private val creationDate: ZonedDateTime = ZonedDateTime.now()
 
@@ -57,5 +57,13 @@ class Flat(
         return "Flat(id=$id, name='$name', coordinates=$coordinates, area=$area, numberOfRooms=$numberOfRooms, price=$price, balcony=$balcony, furnish=$furnish, house=$house, creationDate=$creationDate)"
     }
 
+    override fun compareTo(other: Flat): Int {
+        val price = this.price ?: 0L
+        val otherPrice = other.price ?: 0L
 
+        val area = this.area ?: 0L
+        val otherArea = other.area ?: 0L
+
+        return (price.compareTo(otherPrice) + area.compareTo(otherArea))
+    }
 }
