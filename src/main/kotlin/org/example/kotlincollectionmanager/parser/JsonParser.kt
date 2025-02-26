@@ -43,7 +43,11 @@ class JsonParser(private val receiverService: ReceiverService) {
         val mapper = ObjectMapper()
 
         try {
-            val file = File("$fileName.json")
+            val file = if (fileName.contains(".json")) {
+                File(fileName)
+            } else {
+                File("$fileName.json")
+            }
 
             if (file.exists()) file.delete()
             file.createNewFile()

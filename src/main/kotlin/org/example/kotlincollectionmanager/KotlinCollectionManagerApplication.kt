@@ -16,7 +16,11 @@ class KotlinCollectionManagerApplication(private val invokerService: InvokerServ
     override fun run(vararg args: String?) {
         if (args.isNotEmpty()) {
             val fileName = args[0]?.trim()
-            val resource = File("$fileName.json")
+            val resource = if (fileName?.contains(".json") == true) {
+                File("$fileName")
+            } else {
+                File("$fileName.json")
+            }
 
             if (resource.exists()) {
                 if (resource.length() > 0) {
@@ -24,13 +28,17 @@ class KotlinCollectionManagerApplication(private val invokerService: InvokerServ
                     parser.loadFlats(inputStream)
                 }
             } else {
-                val file = File("$fileName.json")
+                val file = if (fileName?.contains(".json") == true) {
+                    File("$fileName")
+                } else {
+                    File("$fileName.json")
+                }
 
                 try {
                     if (file.createNewFile()) {
-                        println("Файл $fileName.json создан успешно.")
+                        println("Файл $fileName создан успешно.")
                     } else {
-                        println("Ошибка при создании файла $fileName.json")
+                        println("Ошибка при создании файла $fileName")
                     }
                 } catch (e: IOException) {
                     println("Ошибка при создании файла: $e")
