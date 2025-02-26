@@ -47,7 +47,7 @@ class ReceiverService(@Autowired private var collection: Collection) {
     }
 
     fun getAveragePrice() {
-        var allPrices: Long= 0
+        var allPrices: Long = 0
         val flatsCount = collection.getFlats().size
 
         if (flatsCount > 0) {
@@ -59,6 +59,16 @@ class ReceiverService(@Autowired private var collection: Collection) {
             println("Average price for flats: ${allPrices / flatsCount}")
         } else {
             println("No flats available. Cannot get the average price")
+        }
+    }
+
+    fun filterContainsName(name: String) {
+        val flats = collection.getFlats()
+
+        flats.forEach { flat ->
+            if (flat.value.getName() != null) {
+                if (flat.value.getName()!!.contains(name, ignoreCase = true)) println(flat.value)
+            }
         }
     }
 }
