@@ -1,6 +1,7 @@
 package org.example.kotlincollectionmanager.parser
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.exc.InvalidFormatException
 import org.example.kotlincollectionmanager.collection.items.Coordinates
 import org.example.kotlincollectionmanager.collection.items.Flat
 import org.example.kotlincollectionmanager.collection.items.Furnish
@@ -33,9 +34,12 @@ class JsonParser(private val receiverService: ReceiverService) {
 
                     receiverService.insert(newFlat)
                 }
+
             }
+        } catch (e: InvalidFormatException) {
+            println("File was damaged. Please, check it and try again")
         } catch (e: Exception) {
-            e.printStackTrace()
+            println("Unexpected error, please try again")
         }
     }
 
@@ -70,7 +74,7 @@ class JsonParser(private val receiverService: ReceiverService) {
             }
             println("Квартиры успешно сохранены в файл $fileName")
         } catch (e: Exception) {
-            e.printStackTrace()
+            println("Unexpected error, please try again. Cause: ${e.message}")
         }
     }
 }
