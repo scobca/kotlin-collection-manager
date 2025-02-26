@@ -5,7 +5,7 @@ import org.example.kotlincollectionmanager.command.validators.dto.FlatData
 import org.springframework.stereotype.Component
 
 @Component
-object StringFlatDataConverter {
+object StringToFlatDataConverter {
     fun convertStringToFlatData(stringifyData: String): FlatData {
         val values = stringifyData
             .replace("[", "")

@@ -3,14 +3,14 @@ package org.example.kotlincollectionmanager.command
 import org.example.kotlincollectionmanager.command.interfaces.AutoCommand
 import org.example.kotlincollectionmanager.command.validators.OneOrTwoArgsValidator
 import org.example.kotlincollectionmanager.strategies.InsertFlatStrategy
-import org.example.kotlincollectionmanager.utils.StringFlatDataConverter
+import org.example.kotlincollectionmanager.utils.StringToFlatDataConverter
 import org.springframework.stereotype.Component
 
 @Component
 class InsertCommand(
     override val validator: OneOrTwoArgsValidator,
     private val insertFlatStrategy: InsertFlatStrategy,
-    private val flatDataConverter: StringFlatDataConverter
+    private val flatDataConverter: StringToFlatDataConverter
 ) : AutoCommand<OneOrTwoArgsValidator> {
     override val name: String = "insert"
     override val description: String = "Adds a new element with the specified key"
