@@ -51,6 +51,16 @@ class ReceiverService(@Autowired private var collection: Collection) {
         collection.getFlats().clear()
     }
 
+    fun removeAllByBalcony(bool: String) {
+        val flats = collection.getFlats()
+
+        flats.forEach { flat ->
+            if (flat.value.getBalcony().toString() == bool) {
+                remove(flat.key)
+            }
+        }
+    }
+
     fun getAveragePrice() {
         var allPrices: Long = 0
         val flatsCount = collection.getFlats().size
