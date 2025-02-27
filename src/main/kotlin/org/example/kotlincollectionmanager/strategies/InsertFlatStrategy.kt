@@ -27,6 +27,8 @@ class InsertFlatStrategy(
             val newCoordinates = Coordinates()
             val newHouse = House()
 
+            newFlat.setId(id)
+
             while (newFlat.getName() == null) {
                 newFlat.setName(scanner.cycleScan("Enter element name: ") { it }.trim())
             }
