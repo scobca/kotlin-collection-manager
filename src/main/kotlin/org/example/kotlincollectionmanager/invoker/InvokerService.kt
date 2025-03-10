@@ -12,6 +12,8 @@ import java.util.*
 class InvokerService(@Autowired private val commandsList: List<Command<out Validator>>) {
     private val commands = mutableMapOf<String, Command<out Validator>>()
     private val history = CommandsHistory()
+    private var runtime = true
+
 
     @PostConstruct
     fun init() {
@@ -23,10 +25,15 @@ class InvokerService(@Autowired private val commandsList: List<Command<out Valid
     fun getCommands(): Map<String, Command<out Validator>> = commands
     fun getCommandsHistory(): LinkedList<String> = history.getCommandsHistory()
 
+    fun closeScanner() {
+        runtime = false
+    }
+
     fun run() {
         val scanner = Scanner(System.`in`)
+
         print("> ")
-        while (scanner.hasNextLine()) {
+        while (runtime) {
             val line = scanner.nextLine().trim()
             val command = commands[line.split(" ")[0]]
             val args = line.split(" ").drop(1)
@@ -36,10 +43,9 @@ class InvokerService(@Autowired private val commandsList: List<Command<out Valid
                 continue
             }
 
-            if (command?.name == "exit") {
-                println("Exiting...")
-                break
-            }
+//            if (command?.name == "exit") {
+//                break
+//            }
 
             if (command != null) {
                 command.validate(args)
