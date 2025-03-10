@@ -9,10 +9,20 @@ import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
 
+/**
+ * The main class of the Kotlin Collection Manager application.
+ *
+ * Implements the CommandLineRunner interface for processing command line arguments.
+ */
 @SpringBootApplication
 class KotlinCollectionManagerApplication(private val invokerService: InvokerService, private val parser: JsonParser) :
     CommandLineRunner {
 
+    /**
+     * Performs command line argument processing and launches the application.
+     *
+     * @param args array of command line arguments
+     */
     override fun run(vararg args: String?) {
         if (args.isNotEmpty()) {
             val fileName = args[0]?.trim()
