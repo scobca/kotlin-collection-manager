@@ -4,8 +4,20 @@ import org.example.kotlincollectionmanager.collection.items.Furnish
 import org.example.kotlincollectionmanager.command.validators.dto.FlatData
 import org.springframework.stereotype.Component
 
+/**
+ * An object for converting a string to a FlatData object.
+ * Provides verification of the input data format and creation of an object with the required fields.
+ */
 @Component
 object StringToFlatDataConverter {
+    /**
+     * Converts a string to a FlatData object.
+     * Splits the input string Divides the input string into values by comma and checks the number of values (it should be 11).
+     * If the format is incorrect, returns an object with default values.
+     *
+     * @param stringifyData is a string containing the data to be converted.
+     * @return A FlatData object created from the input string.
+     */
     fun convertStringToFlatData(stringifyData: String): FlatData {
         val values = stringifyData
             .replace("[", "")

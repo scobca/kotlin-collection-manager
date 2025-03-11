@@ -11,8 +11,22 @@ import org.springframework.stereotype.Component
 import java.io.*
 import java.util.*
 
+/**
+ * A parser for working with JSON files.
+ * Provides methods for downloading and saving flat data in JSON format.
+ */
 @Component
-class JsonParser(private val receiverService: ReceiverService) {
+class JsonParser(
+    /**
+     * A service for interacting with a collection of objects.
+     */
+    private val receiverService: ReceiverService
+) {
+    /**
+     * Downloads flats from a JSON file and adds them to the collection.
+     *
+     * @param inputStream is a stream for reading JSON data.
+     */
     fun loadFlats(inputStream: InputStream) {
         val mapper = ObjectMapper()
 
@@ -43,6 +57,12 @@ class JsonParser(private val receiverService: ReceiverService) {
         }
     }
 
+    /**
+     * Saves flats from the collection to a JSON file.
+     *
+     * @param flats flat map to save.
+     * @param fileName is the name of the file to save (with the extension ".json", if there is none).
+     */
     fun saveFlats(flats: TreeMap<Long, Flat>, fileName: String) {
         val mapper = ObjectMapper()
 

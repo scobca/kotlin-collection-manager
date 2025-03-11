@@ -5,12 +5,41 @@ import org.example.kotlincollectionmanager.command.validators.OneArgCommandValid
 import org.example.kotlincollectionmanager.receiver.ReceiverService
 import org.springframework.stereotype.Component
 
+/**
+ * Command for filtering flats by the presence of a substring in the name.
+ * Implements the Command interface and uses the OneArgCommandValidator validator to check for a single substring argument to search for.
+ */
 @Component
-class FilterContainsNameCommand(override val validator: OneArgCommandValidator, private val receiverService: ReceiverService) : Command<OneArgCommandValidator> {
+class FilterContainsNameCommand(
+    /**
+     * Validator for checking the presence of a single argument.
+     */
+    override val validator: OneArgCommandValidator,
+    /**
+     * A service for interacting with a collection of flats.
+     */
+    private val receiverService: ReceiverService
+) : Command<OneArgCommandValidator> {
+    /**
+     * The name of the command.
+     */
     override val name: String = "filter_contains_name"
+
+    /**
+     * Description of the command.
+     */
     override val description: String = "Return all flats, which name contains similar word from key"
+
+    /**
+     * The list of keywords for the command is ["name"], indicating that the command expects a name to be searched for.
+     */
     override val keys: List<String>? = listOf("name")
 
+    /**
+     * Executes the command by calling the filterContainsName method of the ReceiverService with the passed substring.
+     *
+     * @param args Command arguments are a substring for searching.
+     */
     override fun execute(vararg args: String?) {
         val sub = args.elementAt(0)
 
@@ -21,6 +50,11 @@ class FilterContainsNameCommand(override val validator: OneArgCommandValidator, 
         }
     }
 
+    /**
+     * Checks the arguments of the command using the OneArgCommandValidator validator.
+     *
+     * @param args List of command arguments.
+     */
     override fun validate(args: List<String>) {
         validator.validateArgs(args, this)
     }
