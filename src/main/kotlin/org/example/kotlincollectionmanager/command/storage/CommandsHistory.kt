@@ -24,7 +24,7 @@ class CommandsHistory {
     fun getCommandsHistory(): LinkedList<String> = history
 
     /**
-     * Adds the name of the team to the history.
+     * Adds The name of the command to the history.
      * If the history already contains 10 commands, delete the oldest command before adding a new one.
      *
      * @param command is the command whose name needs to be added to the history.
