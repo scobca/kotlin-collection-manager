@@ -13,7 +13,7 @@ import java.util.*
 
 /**
  * A parser for working with JSON files.
- * Provides methods for downloading and saving apartment data in JSON format.
+ * Provides methods for downloading and saving flat data in JSON format.
  */
 @Component
 class JsonParser(
@@ -23,7 +23,7 @@ class JsonParser(
     private val receiverService: ReceiverService
 ) {
     /**
-     * Downloads apartments from a JSON file and adds them to the collection.
+     * Downloads flats from a JSON file and adds them to the collection.
      *
      * @param inputStream is a stream for reading JSON data.
      */
@@ -58,9 +58,9 @@ class JsonParser(
     }
 
     /**
-     * Saves apartments from the collection to a JSON file.
+     * Saves flats from the collection to a JSON file.
      *
-     * @param flats apartment map to save.
+     * @param flats flat map to save.
      * @param fileName is the name of the file to save (with the extension ".json", if there is none).
      */
     fun saveFlats(flats: TreeMap<Long, Flat>, fileName: String) {

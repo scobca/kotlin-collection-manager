@@ -29,12 +29,12 @@ class ExitCommand(
     override val name: String = "exit"
 
     /**
-     * The list of keywords for the command is null, because the command does not require arguments.
+     * The list of keywords for the command is null, because the command doesn't require arguments.
      */
     override val description: String = "Program termination (without saving to a file)"
 
     /**
-     * The list of keywords for the command is null, because the command does not require arguments.
+     * The list of keywords for the command is null, because the command doesn't require arguments.
      */
     override val keys: List<String>? = null
 

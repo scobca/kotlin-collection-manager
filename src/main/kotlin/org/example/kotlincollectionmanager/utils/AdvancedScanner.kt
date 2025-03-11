@@ -43,7 +43,7 @@ class AdvancedScanner {
      * Similar to cycleScan, but allows the user to leave the current value of a variable by entering an empty string.
      *
      * @param message is a message to output to the user.
-     * @param oldValue is the current value that will be returned if the user does not enter anything.
+     * @param oldValue is the current value that will be returned if the user doesn't enter anything.
      * @param converter is a function for converting a string to type T.
      * @return is either the converted new value or the old value.
      */

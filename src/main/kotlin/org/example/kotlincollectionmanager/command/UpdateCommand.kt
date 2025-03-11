@@ -7,7 +7,7 @@ import org.example.kotlincollectionmanager.utils.StringToFlatDataConverter
 import org.springframework.stereotype.Component
 
 /**
- * Command to update the apartment by its ID.
+ * Command to update the flat by its ID.
  * Implements the AutoCommand interface and uses OneOrTwoArgsValidator to validate arguments.
  */
 @Component
@@ -17,11 +17,11 @@ class UpdateCommand(
      */
     override val validator: OneOrTwoArgsValidator,
     /**
-     * Strategy for apartment renovation.
+     * Strategy for flat renovation.
      */
     private val updateFlatStrategy: UpdateFlatStrategy,
     /**
-     * String converter to apartment data.
+     * String converter to flat data.
      */
     private val flatDataConverter: StringToFlatDataConverter,
 ) :
@@ -35,31 +35,31 @@ class UpdateCommand(
      */
     override val description: String = "Updates the command by it's Id"
     /**
-     * A list of keywords for the team containing ["id"], which indicates that the team is expecting an ID.
+     * A list of keywords for the command containing ["id"], which indicates that the command is expecting an ID.
      */
     override val keys: List<String> = listOf("id")
 
     /**
-     * Executes the apartment update command using the specified identifier.
+     * Executes the flat update command using the specified identifier.
      *
      * @param args array of command arguments. A single String argument is expected, representing the identifier.
      */
     override fun execute(vararg args: String?) {
         val id = args.elementAt(0)?.toLongOrNull()
 
-        updateFlatStrategy.lifeTimeInsert(id)
+        updateFlatStrategy.lifeTimeExecution(id)
     }
 
     /**
-     * Executes an automatic apartment update command based on the specified arguments.
+     * Executes an automatic flat update command based on the specified arguments.
      *
-     * @param args array of command arguments. Two arguments are expected: the identifier and the apartment data.
+     * @param args array of command arguments. Two arguments are expected: the identifier and the flat data.
      */
     override fun autoExecute(vararg args: String?) {
         val id = args.elementAt(0)?.toLongOrNull()
         val data = args.elementAt(1)
 
-        updateFlatStrategy.automaticallyInsert(id, flatDataConverter.convertStringToFlatData(data.toString()))
+        updateFlatStrategy.automaticallyExecution(id, flatDataConverter.convertStringToFlatData(data.toString()))
     }
 
     /**

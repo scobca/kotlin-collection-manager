@@ -11,13 +11,31 @@ import org.example.kotlincollectionmanager.utils.AdvancedScanner
 import org.example.kotlincollectionmanager.utils.CommandsErrorHandler
 import org.springframework.stereotype.Component
 
+/**
+ * A strategy for updating the flat in the collection.
+ * Implements the SpecifyCommandStrategy interface and uses the ReceiverService to interact with the collection.
+ */
 @Component
 class UpdateFlatStrategy(
+    /**
+     * A service for interacting with a collection of objects.
+     */
     private val receiverService: ReceiverService,
+    /**
+     * Error handler for commands.
+     */
     private val commandsErrorHandler: CommandsErrorHandler,
+    /**
+     * Advanced scanner for reading user input.
+     */
     private val scanner: AdvancedScanner
 ) : SpecifyCommandStrategy {
-    override fun lifeTimeInsert(id: Long?) {
+    /**
+     * Performs a manual update of the flat according to the specified identifier.
+     *
+     * @param id is the ID of the flat to update.
+     */
+    override fun lifeTimeExecution(id: Long?) {
         if (id == null) {
             println("Id format is invalid. Please try again")
         } else if (receiverService.getElementById(id) == null) {
@@ -94,7 +112,13 @@ class UpdateFlatStrategy(
         }
     }
 
-    override fun automaticallyInsert(id: Long?, data: FlatData) {
+    /**
+     * Performs automatic flat updates based on the specified data.
+     *
+     * @param id is the ID of the flat to update.
+     * @param data flat data for updating.
+     */
+    override fun automaticallyExecution(id: Long?, data: FlatData) {
         val coordinates = Coordinates()
             .setX(data.cordX)
             .setY(data.cordY)

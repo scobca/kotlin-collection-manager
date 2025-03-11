@@ -8,7 +8,7 @@ import org.example.kotlincollectionmanager.collection.items.Furnish
  */
 data class FlatData(
     /**
-     * The name of the apartment.
+     * The name of the flat.
      */
     val name: String,
 
@@ -23,17 +23,17 @@ data class FlatData(
     val cordY: Float,
 
     /**
-     * The area of the apartment.
+     * The area of the flat.
      */
     val area: Long,
 
     /**
-     * The number of rooms in the apartment.
+     * The number of rooms in the flat.
      */
     val numberOfRooms: Long,
 
     /**
-     * The price of the apartment.
+     * The price of the flat.
      */
     val price: Long,
 
@@ -43,12 +43,12 @@ data class FlatData(
     val balcony: Boolean,
 
     /**
-     * Apartment finishing level (Furniture type).
+     * flat finishing level (Furniture type).
      */
     val furnish: Furnish,
 
     /**
-     * The name of the house where the apartment is located.
+     * The name of the house where the flat is located.
      */
     val houseName: String,
 

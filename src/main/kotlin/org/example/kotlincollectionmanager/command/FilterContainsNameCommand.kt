@@ -6,7 +6,7 @@ import org.example.kotlincollectionmanager.receiver.ReceiverService
 import org.springframework.stereotype.Component
 
 /**
- * Command for filtering apartments by the presence of a substring in the name.
+ * Command for filtering flats by the presence of a substring in the name.
  * Implements the Command interface and uses the OneArgCommandValidator validator to check for a single substring argument to search for.
  */
 @Component
@@ -16,7 +16,7 @@ class FilterContainsNameCommand(
      */
     override val validator: OneArgCommandValidator,
     /**
-     * A service for interacting with a collection of apartments.
+     * A service for interacting with a collection of flats.
      */
     private val receiverService: ReceiverService
 ) : Command<OneArgCommandValidator> {
@@ -31,7 +31,7 @@ class FilterContainsNameCommand(
     override val description: String = "Return all flats, which name contains similar word from key"
 
     /**
-     * The list of keywords for the team is ["name"], indicating that the team expects a name to be searched for.
+     * The list of keywords for the command is ["name"], indicating that the command expects a name to be searched for.
      */
     override val keys: List<String>? = listOf("name")
 

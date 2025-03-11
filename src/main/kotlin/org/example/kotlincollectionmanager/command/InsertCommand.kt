@@ -51,7 +51,7 @@ class InsertCommand(
     override fun execute(vararg args: String?) {
         val id = args.elementAt(0)?.toLongOrNull()
 
-        insertFlatStrategy.lifeTimeInsert(id)
+        insertFlatStrategy.lifeTimeExecution(id)
     }
 
     /**
@@ -63,7 +63,7 @@ class InsertCommand(
         val id = args.elementAt(0)?.toLongOrNull()
         val data = args.elementAt(1)
 
-        insertFlatStrategy.automaticallyInsert(id, flatDataConverter.convertStringToFlatData(data.toString()))
+        insertFlatStrategy.automaticallyExecution(id, flatDataConverter.convertStringToFlatData(data.toString()))
     }
 
     /**

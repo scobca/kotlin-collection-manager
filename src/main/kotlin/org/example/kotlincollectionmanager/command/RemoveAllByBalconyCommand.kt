@@ -6,7 +6,7 @@ import org.example.kotlincollectionmanager.receiver.ReceiverService
 import org.springframework.stereotype.Component
 
 /**
- * Command to delete all apartments by the balcony parameter.
+ * Command to delete all flats by the balcony parameter.
  * Implements the Command interface and uses OneArgCommandValidator to validate arguments.
  */
 @Component
@@ -36,7 +36,7 @@ class RemoveAllByBalconyCommand(
     override val keys: List<String>? = listOf("true | false")
 
     /**
-     * Executes the apartment deletion command using the specified argument.
+     * Executes the flat deletion command using the specified argument.
      *
      * @param args array of command arguments. One String argument is expected ("true" or "false").
      */

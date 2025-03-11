@@ -10,12 +10,27 @@ import org.example.kotlincollectionmanager.strategies.interfaces.SpecifyCommandS
 import org.example.kotlincollectionmanager.utils.AdvancedScanner
 import org.springframework.stereotype.Component
 
+/**
+ * A strategy for replacing an flat in the collection if the new flat is better.
+ * Implements the SpecifyCommandStrategy interface and uses the ReceiverService to interact with the collection.
+ */
 @Component
 class ReplaceIfLowerStrategy(
+    /**
+     * Advanced scanner for reading user input.
+     */
     private val scanner: AdvancedScanner,
+    /**
+     * A service for interacting with a collection of objects.
+     */
     private val receiverService: ReceiverService
 ) : SpecifyCommandStrategy {
-    override fun lifeTimeInsert(id: Long?) {
+    /**
+     * Performs a manual replacement of the flat by the specified identifier.
+     *
+     * @param id is the ID of the replacement flat.
+     */
+    override fun lifeTimeExecution(id: Long?) {
         val newFlat = Flat()
         val newCoordinates = Coordinates()
         val newHouse = House()
@@ -59,7 +74,13 @@ class ReplaceIfLowerStrategy(
         id?.let { receiverService.replaceIfLower(it, newFlat) }
     }
 
-    override fun automaticallyInsert(id: Long?, data: FlatData) {
+    /**
+     * Performs an automatic flat replacement based on the specified data.
+     *
+     * @param id is the ID of the replacement flat.
+     * @param data flat data for replacement.
+     */
+    override fun automaticallyExecution(id: Long?, data: FlatData) {
         val coordinates = Coordinates()
             .setX(data.cordX)
             .setY(data.cordY)

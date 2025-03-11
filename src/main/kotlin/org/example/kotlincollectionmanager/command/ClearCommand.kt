@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component
 
 /**
- * Command to clear the apartment collection.
+ * Command to clear the flat collection.
  * Implements the Command interface and uses the NoArgsCommandValidator to check for missing arguments.
  */
 @Component
@@ -17,7 +17,7 @@ class ClearCommand(
      */
     @Qualifier("noArgsCommandValidator") override val validator: NoArgsCommandValidator,
     /**
-     * A service for interacting with a collection of apartments.
+     * A service for interacting with a collection of flats.
      */
     private val receiverService: ReceiverService
 ) : Command<NoArgsCommandValidator> {
@@ -32,7 +32,7 @@ class ClearCommand(
     override val description: String = "Clears the flats collection"
 
     /**
-     * The list of keywords for the command is null, because the command does not require arguments.
+     * The list of keywords for the command is null, because the command doesn't require arguments.
      */
     override val keys: List<String>? = null
 

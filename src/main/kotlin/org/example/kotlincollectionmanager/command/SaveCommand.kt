@@ -7,7 +7,7 @@ import org.example.kotlincollectionmanager.receiver.ReceiverService
 import org.springframework.stereotype.Component
 
 /**
- * Command to save apartments to a JSON file.
+ * Command to save flats to a JSON file.
  * Implements the Command interface and uses OneArgCommandValidator to validate arguments.
  */
 @Component
@@ -41,7 +41,7 @@ class SaveCommand(
     override val keys: List<String>? = listOf("filename")
 
     /**
-     * Executes the command to save apartments to a JSON file.
+     * Executes the command to save flats to a JSON file.
      *
      * @param args array of command arguments. A single String argument is expected, representing the file name.
      */

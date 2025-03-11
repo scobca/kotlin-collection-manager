@@ -18,7 +18,7 @@ class HistoryCommand(
      */
     @Qualifier("noArgsCommandValidator") override val validator: NoArgsCommandValidator,
     /**
-     * A service for interacting with the history of teams.
+     * A service for interacting with the history of commands.
      */
     @Lazy private val invokerService: InvokerService
 ) : Command<NoArgsCommandValidator> {
@@ -33,7 +33,7 @@ class HistoryCommand(
     override val description: String = "Return last 10 commands from cli"
 
     /**
-     * The list of keywords for the command is null, because the command does not require arguments.
+     * The list of keywords for the command is null, because the command doesn't require arguments.
      */
     override val keys: List<String>? = null
 

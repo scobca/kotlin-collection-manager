@@ -30,7 +30,7 @@ enum class Furnish {
     companion object {
         /**
          * Checks the string and returns the corresponding variant of the Furnish enum.
-         * If the string does not match any of the options, returns NONE.
+         * If the string doesn't match any of the options, returns NONE.
          * The string is converted to uppercase before checking.
          *
          * @param type is the string to check.

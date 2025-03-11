@@ -3,32 +3,32 @@ package org.example.kotlincollectionmanager.collection.items
 import java.time.ZonedDateTime
 
 /**
- * A class for presenting information about an apartment.
+ * A class for presenting information about an flat.
  * It contains fields for the identifier, name, coordinates, area, number of rooms, price, balcony, decoration level, and house.
  */
 class Flat(
     /**
-     * The name of the apartment. It can be null.
+     * The name of the flat. It can be null.
      */
     private var name: String? = null,
 
     /**
-     * The coordinates of the apartment. It can be null.
+     * The coordinates of the flat. It can be null.
      */
     private var coordinates: Coordinates? = Coordinates(),
 
     /**
-     * The area of the apartment. It can be null.
+     * The area of the flat. It can be null.
      */
     private var area: Long? = null,
 
     /**
-     * The number of rooms in the apartment. It can be null.
+     * The number of rooms in the flat. It can be null.
      */
     private var numberOfRooms: Long? = null,
 
     /**
-     * The price of the apartment. It can be null.
+     * The price of the flat. It can be null.
      */
     private var price: Long? = null,
 
@@ -38,71 +38,71 @@ class Flat(
     private var balcony: Boolean? = null,
 
     /**
-     * The apartment's finishing level. It can be null.
+     * The flat's finishing level. It can be null.
      */
     private var furnish: Furnish? = null,
 
     /**
-     * The house where the apartment is located. It can be null.
+     * The house where the flat is located. It can be null.
      */
     private var house: House? = null,
 ) : Comparable<Flat> {
     /**
-     * The unique identifier of the apartment.
+     * The unique identifier of the flat.
      */
     private var id: Long = 0
 
     /**
-     * The date when the apartment object was created.
+     * The date when the flat object was created.
      */
     private val creationDate: ZonedDateTime = ZonedDateTime.now()
 
     /**
-     * Returns the apartment ID.
+     * Returns the flat ID.
      *
-     *  @return Apartment ID.
+     *  @return flat ID.
      */
     fun getId(): Long = id
 
     /**
-     * Returns the name of the apartment.
+     * Returns the name of the flat.
      *
-     * @return Apartment name or null.
+     * @return flat name or null.
      */
     fun getName(): String? = name
 
     /**
-     * Returns the coordinates of the apartment.
+     * Returns the coordinates of the flat.
      *
-     * @return Apartment coordinates or null.
+     * @return flat coordinates or null.
      */
     fun getCoordinates(): Coordinates? = coordinates
 
     /**
-     * Returns the date when the apartment object was created.
+     * Returns the date when the flat object was created.
      *
-     * @return Date of the apartment object creation.
+     * @return Date of the flat object creation.
      */
     fun getCreationDate(): ZonedDateTime = creationDate
 
     /**
-     * Returns the area of the apartment.
+     * Returns the area of the flat.
      *
-     * @return The area of the apartment or null.
+     * @return The area of the flat or null.
      */
     fun getArea(): Long? = area
 
     /**
-     * Returns the number of rooms in the apartment.
+     * Returns the number of rooms in the flat.
      *
      * @return The number of rooms or null.
      */
     fun getNumberOfRooms(): Long? = numberOfRooms
 
     /**
-     * Returns the price of the apartment.
+     * Returns the price of the flat.
      *
-     * @return Apartment price or null.
+     * @return flat price or null.
      */
     fun getPrice(): Long? = price
 
@@ -114,21 +114,21 @@ class Flat(
     fun getBalcony(): Boolean? = balcony
 
     /**
-     * Returns the apartment's finishing level.
+     * Returns the flat's finishing level.
      *
      * @return Furnish or null.
      */
     fun getFurnish(): Furnish? = furnish
 
     /**
-     * Returns the house where the apartment is located.
+     * Returns the house where the flat is located.
      *
      * @return Home or null.
      */
     fun getHouse(): House? = house
 
     /**
-     * Sets the apartment ID if it is greater than 0.
+     * Sets the flat ID if it is greater than 0.
      *
      * @param id is a new identifier.
      * @return The current Flat object.
@@ -138,7 +138,7 @@ class Flat(
     }
 
     /**
-     * Sets the name of the apartment if it is not empty.
+     * Sets the name of the flat if it is not empty.
      *
      * @param name New name.
      * @return The current Flat object.
@@ -146,7 +146,7 @@ class Flat(
     fun setName(name: String) = apply { if (name != "") this.name = name else println("Name cannot be empty") }
 
     /**
-     * Sets the coordinates of the apartment.
+     * Sets the coordinates of the flat.
      *
      * @param coordinates New coordinates.
      * @return The current Flat object.
@@ -154,7 +154,7 @@ class Flat(
     fun setCoordinates(coordinates: Coordinates) = apply { this.coordinates = coordinates }
 
     /**
-     * Sets the area of the apartment if it is in the range from 1 to 996.
+     * Sets the area of the flat if it is in the range from 1 to 996.
      *
      * @param area is a new square.
      * @return The current Flat object.
@@ -164,7 +164,7 @@ class Flat(
     }
 
     /**
-     * Sets the number of rooms in the apartment if it is more than 0.
+     * Sets the number of rooms in the flat if it is more than 0.
      *
      * @param numberOfRooms New number of rooms.
      * @return The current Flat object.
@@ -174,7 +174,7 @@ class Flat(
     }
 
     /**
-     * Sets the price of the apartment if it is in the range from 1 to 682705217.
+     * Sets the price of the flat if it is in the range from 1 to 682705217.
      *
      * @param price New price.
      * @return The current Flat object.
@@ -192,7 +192,7 @@ class Flat(
     fun setBalcony(balcony: Boolean) = apply { this.balcony = balcony }
 
     /**
-     * Sets the finishing level of the apartment.
+     * Sets the finishing level of the flat.
      *
      * @param furnish A new level of finish.
      * @return The current Flat object.
@@ -200,7 +200,7 @@ class Flat(
     fun setFurnish(furnish: Furnish) = apply { this.furnish = furnish }
 
     /**
-     * Sets the house where the apartment is located.
+     * Sets the house where the flat is located.
      *
      * @param house is a new house.
      * @return The current Flat object.
@@ -208,7 +208,7 @@ class Flat(
     fun setHouse(house: House) = apply { this.house = house }
 
     /**
-     * Returns a string representation of the apartment object.
+     * Returns a string representation of the flat object.
      *
      * @return String representation of the object.
      */
@@ -217,9 +217,9 @@ class Flat(
     }
 
     /**
-     * Compares two apartments by price and area.
+     * Compares two flats by price and area.
      *
-     * @param other Another apartment for comparison.
+     * @param other Another flat for comparison.
      * @return The result of the comparison.
      */
     override fun compareTo(other: Flat): Int {

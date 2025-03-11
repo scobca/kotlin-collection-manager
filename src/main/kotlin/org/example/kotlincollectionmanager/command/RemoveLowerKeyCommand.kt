@@ -6,7 +6,7 @@ import org.example.kotlincollectionmanager.receiver.ReceiverService
 import org.springframework.stereotype.Component
 
 /**
- * Command to delete all apartments with an ID below the specified argument.
+ * Command to delete all flats with an ID below the specified argument.
  * Implements the Command interface and uses OneArgCommandValidator to validate arguments.
  */
 @Component
@@ -29,12 +29,12 @@ class RemoveLowerKeyCommand(
      */
     override val description: String = "Remove all flats with id lower than arguments id"
     /**
-     * A list of keywords for the team containing ["id"], which indicates that the team is expecting an ID.
+     * A list of keywords for the command containing ["id"], which indicates that the command is expecting an ID.
      */
     override val keys: List<String>? = listOf("id")
 
     /**
-     * Executes the command to delete apartments with the ID below the specified argument.
+     * Executes the command to delete flats with the ID below the specified argument.
      *
      * @param args array of command arguments. A single String argument is expected, representing the identifier.
      */

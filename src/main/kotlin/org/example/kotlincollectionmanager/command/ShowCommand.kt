@@ -32,7 +32,7 @@ class ShowCommand(
     override val description: String = "Outputs all the elements of the collection in a string representation"
 
     /**
-     * The list of keywords for the command is null, because the command does not require arguments.
+     * The list of keywords for the command is null, because the command doesn't require arguments.
      */
     override val keys: List<String>? = null
 

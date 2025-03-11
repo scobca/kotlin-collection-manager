@@ -17,7 +17,7 @@ class Collection {
     private val initDate: ZonedDateTime = ZonedDateTime.now()
 
     /**
-     * A sorted map of Flat objects, where the key is the apartment identifier.
+     * A sorted map of Flat objects, where the key is the flat identifier.
      */
     private var flats = TreeMap<Long, Flat>()
 
@@ -39,7 +39,7 @@ class Collection {
      * Returns the Flat object by its ID.
      * If there is no object with this ID, returns null.
      *
-     * @param id is the apartment ID.
+     * @param id is the flat ID.
      * @return A Flat or null object.
      */
     operator fun get(id: Long): Flat? {
@@ -49,7 +49,7 @@ class Collection {
     /**
      * Adds or updates a Flat object to the collection by its ID.
      *
-     * @param id is the apartment ID.
+     * @param id is the flat ID.
      * @param value Flat object to add or update.
      */
     operator fun set(id: Long, value: Flat) {

@@ -19,7 +19,7 @@ class HelpCommand(
      */
     override val validator: HelpCommandValidator,
     /**
-     * A service for interacting with teams.
+     * A service for interacting with commands.
      */
     @Lazy private val invokerService: InvokerService
 ) :
@@ -35,7 +35,7 @@ class HelpCommand(
     override val description: String = "Displays help for available commands | for a specific command."
 
     /**
-     * The list of keywords for the command is null, because the command does not require arguments.
+     * The list of keywords for the command is null, because the command doesn't require arguments.
      */
     override val keys: List<String>? = null
 

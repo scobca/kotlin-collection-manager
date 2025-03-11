@@ -4,7 +4,7 @@ package org.example.kotlincollectionmanager.command.interfaces
  * Interface for commands that can be executed in the application.
 Defines properties for identifying and describing the command, as well as methods for executing and validating the command.
  *
- * @param <T> is the type of validator used by the team.
+ * @param <T> is the type of validator used by the command.
  */
 interface Command<T : Validator> {
     /**

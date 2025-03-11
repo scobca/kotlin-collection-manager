@@ -42,10 +42,10 @@ class CommandsErrorHandler(
     }
 
     /**
-     * Handles an error when an object with the specified ID does not exist during an update attempt.
+     * Handles an error when an object with the specified ID doesn't exist during an update attempt.
      * Requests confirmation from the user to create a new object and execute the insert command.
      *
-     * @param id Is the ID of an object that does not exist.
+     * @param id Is the ID of an object that doesn't exist.
      */
     fun resolveFlatUpdateError(id: Long) {
         println("Flat with id: $id doesn't exists. Want to create it? (yes | no)")

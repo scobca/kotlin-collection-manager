@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component
 
 /**
- * Command for calculating and outputting the average price of all apartments in the collection.
+ * Command for calculating and outputting the average price of all flats in the collection.
  * Implements the Command interface and uses the NoArgsCommand Validator to check for missing arguments.
  */
 @Component
@@ -17,7 +17,7 @@ class AveragePriceCommand(
      */
     @Qualifier("noArgsCommandValidator") override val validator: NoArgsCommandValidator,
     /**
-     * A service for interacting with a collection of apartments.
+     * A service for interacting with a collection of flats.
      */
     private val receiverService: ReceiverService
 ) : Command<NoArgsCommandValidator> {
@@ -32,7 +32,7 @@ class AveragePriceCommand(
     override val description: String = "Return average prices of all flats in collection"
 
     /**
-     * The list of keywords for the command is null, because the command does not require arguments.
+     * The list of keywords for the command is null, because the command doesn't require arguments.
      */
     override val keys: List<String>? = null
 
