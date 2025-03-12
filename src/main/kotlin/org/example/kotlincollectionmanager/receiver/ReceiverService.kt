@@ -175,7 +175,7 @@ class ReceiverService(
 
         flats.forEach { flat ->
             if (flat.value.getName() != null) {
-                if (flat.value.getName()!!.contains(name, ignoreCase = true)) println(flat.value)
+                if (flat.value.getName()!!.trim().contains(name.trim(), ignoreCase = true)) println(flat.value)
             }
         }
     }
