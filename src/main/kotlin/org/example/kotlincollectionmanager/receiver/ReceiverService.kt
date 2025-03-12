@@ -135,12 +135,15 @@ class ReceiverService(
      */
     fun removeAllByBalcony(bool: String) {
         val flats = collection.getFlats()
+        val removableFlats = mutableListOf<Long>()
 
         flats.forEach { flat ->
             if (flat.value.getBalcony().toString() == bool) {
-                remove(flat.key)
+                removableFlats.add(flat.key)
             }
         }
+
+        removableFlats.forEach { flat -> remove(flat) }
     }
 
     /**
