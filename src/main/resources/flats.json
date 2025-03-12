@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Квартира 1",
+    "coordinates": {
+      "x": 10,
+      "y": 20.5
+    },
+    "area": 100,
+    "numberOfRooms": 3,
+    "price": 5000000,
+    "balcony": true,
+    "furnish": "FINE",
+    "house": {
+      "name": "Дом 1",
+      "year": 2010,
+      "numberOfFloors": 10
+    }
+  },
+  {
+    "id": 2,
+    "name": "Квартира 2",
+    "coordinates": {
+      "x": 15,
+      "y": 30.2
+    },
+    "area": 80,
+    "numberOfRooms": 2,
+    "price": 3000000,
+    "balcony": false,
+    "furnish": "LITTLE",
+    "house": {
+      "name": "Дом 2",
+      "year": 2005,
+      "numberOfFloors": 8
+    }
+  }
+]
